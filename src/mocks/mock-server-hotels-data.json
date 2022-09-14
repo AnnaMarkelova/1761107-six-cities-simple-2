@@ -1,0 +1,69 @@
+{
+  "api": {
+    "titles": [
+      "Wood and stone place",
+      "Nice, cozy, warm big bed apartment",
+      "Perfectly located Castro",
+      "House in countryside",
+      "The house among olive"
+    ],
+    "descriptions": [
+      "Relax, rejuvenate and unplug in this ultimate rustic getaway experience in the country.",
+      "In our beautiful screened Pondhouse, you can gaze at the stars and listen to the sounds of nature from your cozy warm bed.",
+      "Design interior in most sympathetic area!",
+      "Complitely renovated, well-equipped, cosy studio in idyllic, over 100 years old wooden house.",
+      "Calm street, fast connection to center and airport."
+    ],
+    "cities": [
+      "Paris",
+      "Cologne",
+      "Brussels",
+      "Amsterdam",
+      "Hamburg",
+      "Dusseldorf"
+    ],
+    "images": [
+      "hotel1.jpg",
+      "hotel2.jpg",
+      "hotel3.jpg",
+      "hotel4.jpg",
+      "hotel5.jpg",
+      "hotel6.jpg"
+    ],
+    "nameHosts": [
+      "Angelina",
+      "Sophie",
+      "Corey",
+      "Mollie",
+      "Jack"
+    ],
+    "emailHosts": [
+      "snow@pisem.local",
+      "president@dka.local",
+      "fish@big.local",
+      "test@pisem.local",
+      "freedom@pisem.local"
+    ],
+    "avatarUrlHosts": [
+      "user.jpg",
+      "photo.jpg",
+      "awesome-avatar.jpg",
+      "roland.jpg",
+      "smit.jpg"
+    ],
+    "typeUserHosts": [
+      "Normal",
+      "Pro"
+    ],
+    "latitudes": [
+      "52.37454",
+      "53.550341",
+      "51.225402"
+    ],
+    "longitudes": [
+      "4.897976",
+      "10.000654",
+      "6.776314"
+    ]
+  }
+}

@@ -5,7 +5,7 @@ import { Location } from './location.type.js';
 import { User } from './user.type.js';
 
 export interface Hotel {
-  id: number;
+  id: string;
   title: string;
   description: string;
   date: Date;
