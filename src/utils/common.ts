@@ -1,3 +1,4 @@
+import crypto from 'crypto';
 import { CITIES } from '../consts/cities.js';
 import { GoodType } from '../types/good-type.enum.js';
 import { HotelType } from '../types/hotel-type.enum.js';
@@ -11,7 +12,7 @@ export const createHotel = (row: string) => {
   const tokens = row.replace('\n', '').split('\t');
   const [id, title, description, date, city, previewImage, images, isPremium,
     rating, type, bedrooms, maxAdults, price, goods, idHost, nameHost, emailHost,
-    avatarUrlHost, typeUserHost, countComment, latitude, longitude] = tokens;
+    avatarUrlHost, password, typeUserHost, countComment, latitude, longitude] = tokens;
 
   return {
     id: id,
@@ -33,6 +34,7 @@ export const createHotel = (row: string) => {
       name: nameHost,
       email: emailHost,
       avatarUrl: avatarUrlHost,
+      password: password,
       typeUser: Object.keys(UserType)[Object.values(UserType).indexOf(typeUserHost as unknown as UserType)]
     },
     countComment: Number(countComment),
@@ -45,3 +47,8 @@ export const createHotel = (row: string) => {
 
 export const getErrorMessage = (error: unknown): string =>
   error instanceof Error ? error.message : '';
+
+export const createSHA256 = (line: string, salt: string): string => {
+  const shaHasher = crypto.createHmac('sha256', salt);
+  return shaHasher.update(line).digest('hex');
+};
