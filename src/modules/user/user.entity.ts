@@ -3,9 +3,15 @@ import { User } from '../../types/user.type.js';
 import typegoose, { getModelForClass, defaultClasses } from '@typegoose/typegoose';
 import { createSHA256 } from '../../utils/common.js';
 
+const PASSWORD_LENGTH_MIN = 6;
+const PASSWORD_LENGTH_MAX = 12;
+
+const NAME_LENGTH_MIN = 1;
+const NAME_LENGTH_MAX = 15;
+
 const { prop, modelOptions } = typegoose;
 
-export interface UserEntity extends defaultClasses.Base {}
+export interface UserEntity extends defaultClasses.Base { }
 
 modelOptions({
   schemaOptions: {
@@ -24,19 +30,35 @@ export class UserEntity extends defaultClasses.TimeStamps implements User {
     this.typeUser = data.typeUser;
   }
 
-  @prop({required: true, default: '', minlength: 1, maxlength: 15})
+  @prop({
+    required: true,
+    default: '',
+    minlength: [NAME_LENGTH_MIN, 'Min length for name is 1'],
+    maxlength: [NAME_LENGTH_MAX, 'Min length for name is 15'],
+  })
   public name!: string;
 
-  @prop({ unique: true, required: true, match: [/^([\w-\\.]+@([\w-]+\.)+[\w-]{2,4})?$/, 'Email is incorrect'] })
+  @prop({
+    unique: true,
+    required: true,
+    match: [/^([\w-\\.]+@([\w-]+\.)+[\w-]{2,4})?$/, 'Email is incorrect'] })
   public email!: string;
 
   @prop()
   public avatarUrl!: string;
 
-  @prop({required: true, minlength: 6, maxlength: 12})
+  @prop({
+    required: true,
+    minlength: [PASSWORD_LENGTH_MIN, 'Min length for password is 6'],
+    maxlength: [PASSWORD_LENGTH_MAX, 'Max length for password is 12']
+  })
   public password!: string;
 
-  @prop({required: true})
+  @prop({
+    required: true,
+    type: () => String,
+    enum: UserType
+  })
   public typeUser!: UserType;
 
   public setPassword(password: string, salt: string) {
