@@ -45,6 +45,7 @@ export default class ImportCommand implements CliCommandInterface {
     await this.offerService.create({
       ...offer,
       host: user.id,
+      city: offer.city.name
     });
   }
 
@@ -53,11 +54,6 @@ export default class ImportCommand implements CliCommandInterface {
     await this.saveOffer(offer);
     resolve();
   }
-
-  // private onLine(line: string) {
-  //   const offer = createHotel(line);
-  //   console.log(chalk.bgBlue(JSON.stringify(offer)));
-  // }
 
   private onComplete(count: number) {
     console.log(chalk.redBright(`${count} rows imported.`));
