@@ -1,0 +1,189 @@
+openapi: 3.0.2
+info:
+  title: API server for demo-project "Six cities".
+  description: |-
+    * Server list of resources and routes».
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  version: 1.0.0
+tags:
+  - name: offers
+    description: Offers actions.
+  - name: comments
+    description: Comments actions.
+  - name: users
+    description: Users actions.
+
+paths:
+  /users/register:
+    post:
+      tags:
+        - users
+      summary: User registration
+      description: Registers a new user.
+
+      requestBody:
+        description: Information about user registration
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/createUser"
+        required: true
+      responses:
+        "201":
+          description: The user is registered. User object.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/user"
+
+        "409":
+          description: A user with this email already exists.
+
+  /users/login:
+    post:
+      tags:
+        - users
+      summary: User authorization
+      description: Authorizes a user based on a username and password
+
+      requestBody:
+        description: Information about user authorization
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/postUser"
+        required: true
+      responses:
+        "200":
+          description: The user is authorized. User object.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/user"
+
+        "400":
+          description: A User does not exist.
+
+    get:
+      tags:
+        - users
+      summary: Checking user status
+      description: Returns information about the authorized user
+      requestBody:
+        description: Information about user status
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/token"
+        required: true
+
+      responses:
+        "200":
+          description: The user is authorized. User object.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/userWithToken"
+
+        "401":
+          description: User not authorized
+
+components:
+  schemas:
+    createUser:
+      type: object
+
+      properties:
+        email:
+          type: string
+          example: Oliver.conner@gmail.com
+
+        name:
+          type: string
+          example: Keks
+
+        avatarUrl:
+          type: string
+          example: img/1.png
+
+        typeUser:
+          type: string
+          example: 6329c3d6a04ab1061c6425ea
+
+        password:
+          type: string
+          example: 123456
+
+    user:
+      type: object
+
+      properties:
+        id:
+          type: string
+          example: 6329c3d6a04ab1061c6425ea
+
+        email:
+          type: string
+          example: Oliver.conner@gmail.com
+
+    postUser:
+      type: object
+
+      properties:
+        email:
+          type: string
+          example: Oliver.conner@gmail.com
+
+        password:
+          type: string
+          example: 123456
+
+    getUser:
+      type: object
+
+      properties:
+        email:
+          type: string
+          example: Oliver.conner@gmail.com
+
+        password:
+          type: string
+          example: 123456
+
+    token:
+      type: object
+
+      properties:
+        token:
+          type: string
+          example: T2xpdmVyLmNvbm5lckBnbWFpbC5jb20=
+
+    userWithToken:
+      type: object
+
+      properties:
+        email:
+          type: string
+          example: Oliver.conner@gmail.com
+
+        name:
+          type: string
+          example: Keks
+
+        avatarUrl:
+          type: string
+          example: img/1.png
+
+        typeUser:
+          type: string
+          example: 6329c3d6a04ab1061c6425ea
+
+        password:
+          type: string
+          example: 123456
+
+        token:
+          type: string
+          example: T2xpdmVyLmNvbm5lckBnbWFpbC5jb20=
