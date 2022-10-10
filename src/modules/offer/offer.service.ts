@@ -39,14 +39,15 @@ export default class OfferService implements OfferServiceInterface {
             from: 'comments',
             let: { commentsId: '$_id'},
             pipeline: [
-              { $match: { $expr: { $in: ['$$commentsId', '$commentsCount'] } } },
+              { $match: { $expr: { $in: ['$$offerId', '$offerId'] } } },
               { $project: { _id: 1}}
             ],
             as: 'comments'
           },
         },
         { $addFields:
-            { id: { $toString: '$_id'}, countComment: { $size: '$comments'} }
+            { id: { $toString: '$_id'},
+              countComment: { $size: '$comments'} }
         },
         { $unset: 'comments' },
         { $limit: DEFAULT_OFFER_COUNT},
@@ -76,4 +77,13 @@ export default class OfferService implements OfferServiceInterface {
       }).exec();
   }
 
+  public async calcRating(offerId: string, rating: number): Promise<DocumentType<OfferEntity> | null> {
+    const offer = await this.offerModel.findById(offerId);
+
+    const prevRating = offer? offer.rating : 0;
+    return this.offerModel
+      .findByIdAndUpdate(offerId, {'$set': {
+        rating: ((prevRating + rating)/2).toFixed(1),
+      }}).exec();
+  }
 }
