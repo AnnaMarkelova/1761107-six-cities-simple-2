@@ -39,7 +39,7 @@ export default class OfferService implements OfferServiceInterface {
             from: 'comments',
             let: { commentsId: '$_id'},
             pipeline: [
-              { $match: { $expr: { $in: ['$$offerId', '$offerId'] } } },
+              { $match: { $expr: { $in: ['$$commentsId', '$countComment'] } } },
               { $project: { _id: 1}}
             ],
             as: 'comments'

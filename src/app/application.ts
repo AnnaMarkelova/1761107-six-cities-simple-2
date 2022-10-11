@@ -2,6 +2,7 @@ import { inject, injectable } from 'inversify';
 import { ConfigInterface } from '../common/config/config.interface.js';
 import { DatabaseInterface } from '../common/database-client/database.interface.js';
 import { LoggerInterface } from '../common/logger/logger.interface.js';
+import { OfferServiceInterface } from '../modules/offer/offer-service.interface.js';
 import { Component } from '../types/component.types.js';
 import { getURI } from '../utils/db.js';
 
@@ -11,7 +12,8 @@ export default class Application {
   constructor(
     @inject(Component.LoggerInterface) private logger: LoggerInterface,
     @inject(Component.ConfigInterface) private config: ConfigInterface,
-    @inject(Component.DatabaseInterface) private databaseClient: DatabaseInterface
+    @inject(Component.DatabaseInterface) private databaseClient: DatabaseInterface,
+    @inject(Component.OfferServiceInterface) private offerService: OfferServiceInterface
   ) {}
 
   public async init() {
@@ -29,5 +31,10 @@ export default class Application {
     );
 
     await this.databaseClient.connect(uri);
+
+    // нужны для тестирования, перед защитой удалю
+    //const offers = await this.offerService.calcRating('63358d9850bcefa5f37e2e5d', 2);
+    // const offers = await this.offerService.findById('63358d9850bcefa5f37e2e5d');
+    // console.log(offers);
   }
 }
