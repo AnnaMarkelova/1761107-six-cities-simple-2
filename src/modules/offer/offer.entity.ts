@@ -1,5 +1,5 @@
 import typegoose, { defaultClasses, getModelForClass, Ref } from '@typegoose/typegoose';
-// import { City } from '../../types/city.type.js';
+import { City } from '../../types/city.type.js';
 import { GoodType } from '../../types/good-type.enum.js';
 import { HotelType } from '../../types/hotel-type.enum.js';
 import { Location } from '../../types/location.type.js';
@@ -53,11 +53,9 @@ export class OfferEntity extends defaultClasses.TimeStamps {
   public date!: Date;
 
   @prop({
-    // type: String,
     required: true
   })
-  public city!: string;
-  // public city!: City['name'];
+  public city!: City;
 
   @prop({
     required: true
@@ -86,6 +84,7 @@ export class OfferEntity extends defaultClasses.TimeStamps {
     enum: ['Apartment', 'House', 'Room', 'Hotel']
   })
   public type!: HotelType;
+
 
   @prop({
     required: true,
@@ -116,8 +115,6 @@ export class OfferEntity extends defaultClasses.TimeStamps {
   @prop({
     required: true,
     type: String,
-    // type: () => String,
-    // enum: GoodType,
     default: [],
   })
   public goods!: GoodType[];
