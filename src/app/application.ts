@@ -23,8 +23,12 @@ export default class Application {
     this.expressApp = express();
   }
 
-  public registerRoutes() {
+  public initRoutes() {
     this.expressApp.use('/offers', this.offerController.router);
+  }
+
+  public initMiddleware() {
+    this.expressApp.use(express.json());
   }
 
   public async init() {
@@ -48,7 +52,8 @@ export default class Application {
     // const offers = await this.offerService.findById('63358d9850bcefa5f37e2e5d');
     // console.log(offers);
 
-    this.registerRoutes();
+    this.initMiddleware();
+    this.initRoutes();
 
     this.expressApp.listen(this.config.get('PORT'));
     this.logger.info(`Server started on http://localhost:${this.config.get('PORT')}`);
