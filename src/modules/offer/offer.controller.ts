@@ -5,6 +5,8 @@ import { Component } from '../../types/component.types.js';
 import { LoggerInterface } from '../../common/logger/logger.interface.js';
 import { HttpMethod } from '../../types/http-method.enum.js';
 import { OfferServiceInterface } from './offer-service.interface.js';
+import OfferResponse from './response/offer.response.js';
+import { fillDTO } from '../../utils/common.js';
 
 @injectable()
 export default class OfferController extends Controller {
@@ -22,8 +24,12 @@ export default class OfferController extends Controller {
   }
 
   public async index(_req: Request, res: Response): Promise<void> {
+
     const offers = await this.offerService.find();
     this.ok(res, offers);
+
+    const offerResponse = fillDTO(OfferResponse, offers);
+    this.ok(res, offerResponse);
   }
 
   public create(_req: Request, _res: Response): void {
