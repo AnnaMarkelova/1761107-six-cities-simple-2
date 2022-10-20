@@ -6,6 +6,7 @@ import { LoggerInterface } from '../common/logger/logger.interface.js';
 // import { OfferServiceInterface } from '../modules/offer/offer-service.interface.js';
 import { Component } from '../types/component.types.js';
 import { getURI } from '../utils/db.js';
+import { ControllerInterface } from '../common/controller/controller.interface.js';
 
 @injectable()
 export default class Application {
@@ -17,8 +18,13 @@ export default class Application {
     @inject(Component.ConfigInterface) private config: ConfigInterface,
     @inject(Component.DatabaseInterface) private databaseClient: DatabaseInterface,
     // @inject(Component.OfferServiceInterface) private offerService: OfferServiceInterface
+    @inject(Component.OfferController) private offerController: ControllerInterface,
   ) {
     this.expressApp = express();
+  }
+
+  public registerRoutes() {
+    this.expressApp.use('/offers', this.offerController.router);
   }
 
   public async init() {
@@ -41,6 +47,8 @@ export default class Application {
     //const offers = await this.offerService.calcRating('63358d9850bcefa5f37e2e5d', 2);
     // const offers = await this.offerService.findById('63358d9850bcefa5f37e2e5d');
     // console.log(offers);
+
+    this.registerRoutes();
 
     this.expressApp.listen(this.config.get('PORT'));
     this.logger.info(`Server started on http://localhost:${this.config.get('PORT')}`);

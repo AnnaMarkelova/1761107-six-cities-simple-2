@@ -1,4 +1,5 @@
-# Тестовые данные
- GET http://localhost:3123/api HTTP/1.1
-
  ###
+ #offers
+
+ GET http://localhost:9000/offers HTTP/1.1
+
