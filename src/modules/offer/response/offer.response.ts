@@ -10,8 +10,6 @@ export default class OfferResponse {
 
   @Expose() public description!: string;
 
-  @Expose() public date!: string;
-
   @Expose() public city!: City;
 
   @Expose() public previewImage!: string;

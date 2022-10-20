@@ -6,7 +6,6 @@ export default class UpdateOfferDto {
 
   public title?: string;
   public description?: string;
-  public date?: Date;
   // public city!: City;
   public city?: string;
   public previewImage?: string;

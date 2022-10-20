@@ -1,5 +1,44 @@
  ###
  #offers
 
- GET http://localhost:9000/offers HTTP/1.1
+# GET http://localhost:9000/offers HTTP/1.1
+  ###
+
+ POST http://localhost:9000/offers
+
+ Content-Type: application/json
+
+ {
+   "title": "Perfectly located TEST",
+   "description": "Odio pellentesque diam",
+   "city": {
+     "name": "Hamburg",
+     "location": {
+       "latitude": 53.550341,
+       "longitude": 10.000654
+     }
+   },
+   "previewImage": "hotel1.jpg",
+   "images": [
+     "hotel3.jpg",
+      "hotel4.jpg"
+   ],
+   "isPremium": false,
+   "rating": 4,
+   "type": "Apartment",
+   "bedrooms": 3,
+   "maxAdults": 2,
+   "price": 13929,
+   "goods": [
+      "Fridge",
+      "LaptopFriendlyWorkspace",
+      "Towels",
+      "Washer"
+    ],
+   "host": "63358c4010021a05e36db0bf",
+   "location": {
+     "latitude": 53.550341,
+     "longitude": 10.000654
+   }
+ }
 
