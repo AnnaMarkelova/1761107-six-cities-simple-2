@@ -58,7 +58,7 @@ export default class Application {
     await this.databaseClient.connect(uri);
 
     // нужны для тестирования, перед защитой удалю
-    //const offers = await this.offerService.calcRating('63358d9850bcefa5f37e2e5d', 2);
+    //const offers = await this.offerService.calcRating('63358d9850bcefa5f37e2e5d',2);
     // const offers = await this.offerService.findById('63358d9850bcefa5f37e2e5d');
     // const offers = await this.offerService.create(
     //   {
