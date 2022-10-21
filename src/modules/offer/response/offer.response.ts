@@ -1,7 +1,8 @@
-import { Expose } from 'class-transformer';
+import { Expose, Type } from 'class-transformer';
 import { City } from '../../../types/city.type';
 import { GoodType } from '../../../types/good-type.enum';
 import { Location } from '../../../types/location.type';
+import UserResponse from '../../user/response/user.response';
 
 export default class OfferResponse {
   @Expose() public id!: string;
@@ -28,7 +29,9 @@ export default class OfferResponse {
 
   @Expose() public goods!: GoodType[];
 
-  @Expose() public host!: string;
+  @Expose({ name: 'host' })
+  @Type(() => UserResponse)
+  public host!: UserResponse;
 
   @Expose() public location!: Location;
 
