@@ -48,11 +48,6 @@ export class OfferEntity extends defaultClasses.TimeStamps {
   public description!: string;
 
   @prop({
-    required: true,
-  })
-  public date!: Date;
-
-  @prop({
     required: true
   })
   public city!: City;
@@ -79,9 +74,7 @@ export class OfferEntity extends defaultClasses.TimeStamps {
 
   @prop({
     required: true,
-    // type: () => String,
-    // enum: HotelType
-    enum: ['Apartment', 'House', 'Room', 'Hotel']
+    type: String,
   })
   public type!: HotelType;
 
@@ -106,11 +99,6 @@ export class OfferEntity extends defaultClasses.TimeStamps {
     max:PRICE_MAX
   })
   public price!: number;
-
-  @prop({
-    required: true,
-  })
-  public countComment!: number;
 
   @prop({
     required: true,
