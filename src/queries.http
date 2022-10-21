@@ -4,6 +4,21 @@
 # GET http://localhost:9000/offers HTTP/1.1
   ###
 
+###
+ POST http://localhost:9000/users/register HTTP/1.1
+
+ Content-Type: application/json
+
+ {
+   "email": "fish@big.local",
+   "avatarUrl": "awesome-avatar.jpg",
+   "name": "Sophie",
+   "userType": "Normal",
+   "password": "1234567890"
+ }
+
+ ###
+
  POST http://localhost:9000/offers
 
  Content-Type: application/json
