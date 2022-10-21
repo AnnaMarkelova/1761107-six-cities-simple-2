@@ -5,10 +5,12 @@ import { Component } from '../../types/component.types.js';
 import { LoggerInterface } from '../../common/logger/logger.interface.js';
 import { HttpMethod } from '../../types/http-method.enum.js';
 import { UserServiceInterface } from './user-service.interface';
+import {StatusCodes} from 'http-status-codes';
 import CreateUserDto from './dto/create-user.dto';
 import { fillDTO } from '../../utils/common.js';
 import UserResponse from './response/user.response.js';
 import { ConfigInterface } from '../../common/config/config.interface.js';
+import HttpError from '../../common/errors/http-error.js';
 
 @injectable()
 export default class UserController extends Controller {
@@ -31,9 +33,12 @@ export default class UserController extends Controller {
     const existUser = await this.userService.findByEmail(body.email);
 
     if (existUser) {
-      throw new Error(`User with email ${body.email} exists`);
+      throw new HttpError(
+        StatusCodes.CONFLICT,
+        `User with email «${body.email}» exists.`,
+        'UserController'
+      );
     }
-
     const result = await this.userService.create(body, this.config.get('SALT'));
 
     this.created(res, fillDTO(UserResponse, result));
