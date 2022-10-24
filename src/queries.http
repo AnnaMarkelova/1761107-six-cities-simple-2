@@ -66,7 +66,7 @@ Content-Type: application/json
 ###
 ## get comments offer
 
- GET http://localhost:9000/offers/634527199c42583bf5b1f0a7/comments HTTP/1.1
+ GET http://localhost:9000/offers/634527199c42583bf5b1f0a/comments HTTP/1.1
 
 ###
 ## create comment
