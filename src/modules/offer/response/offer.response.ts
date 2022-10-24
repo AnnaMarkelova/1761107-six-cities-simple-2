@@ -1,8 +1,8 @@
 import { Expose, Type } from 'class-transformer';
-import { City } from '../../../types/city.type';
-import { GoodType } from '../../../types/good-type.enum';
+import { City } from '../../../types/city.type.js';
+import { GoodType } from '../../../types/good-type.enum.js';
 import { Location } from '../../../types/location.type';
-import UserResponse from '../../user/response/user.response';
+import UserResponse from '../../user/response/user.response.js';
 
 export default class OfferResponse {
   @Expose() public id!: string;

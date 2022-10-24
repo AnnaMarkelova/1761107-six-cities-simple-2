@@ -15,8 +15,8 @@ import {
 } from 'class-validator';
 import { CITIES } from '../../../consts/cities.js';
 import { City } from '../../../types/city.type';
-import { GoodType } from '../../../types/good-type.enum';
-import { HotelType } from '../../../types/hotel-type.enum';
+import { GoodType } from '../../../types/good-type.enum.js';
+import { HotelType } from '../../../types/hotel-type.enum.js';
 import { Location } from '../../../types/location.type';
 import { ADULTS_MAX, ADULTS_MIN, BEDROOMS_MAX, BEDROOMS_MIN, DESCRIPTION_LENGTH_MAX, DESCRIPTION_LENGTH_MIN, FILENAME_LENGTH, IMAGES_COUNT, PRICE_MAX, PRICE_MIN, TITLE_LENGTH_MAX, TITLE_LENGTH_MIN } from '../const.js';
 
