@@ -95,3 +95,14 @@ Content-Type: application/json
   "userType": "Normal",
   "password": "1234567890"
 }
+
+### load user avatar
+POST http://localhost:9000/users/63358c4010021a05e36db0bf/avatar
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="avatar"; filename="avatar-angelina.jpg"
+Content-Type: image/jpeg
+
+< ../markup/img/avatar-angelina.jpg
+--WebAppBoundary--
