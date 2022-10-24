@@ -12,6 +12,8 @@ import { fillDTO } from '../../utils/common.js';
 import CreateOfferDto from './dto/create-offer.dto.js';
 import HttpError from '../../common/errors/http-error.js';
 import UpdateOfferDto from './dto/updated-offer.dto.js';
+import CommentResponse from '../comment/response/comment.response.js';
+import { CommentServiceInterface } from '../comment/comment-service.interface.js';
 
 type ParamsGetOffer = {
   offerId: string;
@@ -23,6 +25,7 @@ export default class OfferController extends Controller {
   constructor(
     @inject(Component.LoggerInterface) logger: LoggerInterface,
     @inject(Component.OfferServiceInterface) private offerService: OfferServiceInterface,
+    @inject(Component.CommentServiceInterface) private readonly commentService: CommentServiceInterface
   ) {
     super(logger);
 
@@ -33,6 +36,7 @@ export default class OfferController extends Controller {
     this.addRoute({ path: '/:offerId', method: HttpMethod.Get, handler: this.show });
     this.addRoute({path: '/:offerId', method: HttpMethod.Delete, handler: this.delete});
     this.addRoute({path: '/:offerId', method: HttpMethod.Patch, handler: this.update});
+    this.addRoute({path: '/:offerId/comments', method: HttpMethod.Get, handler: this.getComments});
   }
 
   public async index(_req: Request, res: Response): Promise<void> {
@@ -108,6 +112,22 @@ export default class OfferController extends Controller {
     }
 
     this.ok(res, fillDTO(OfferResponse, updatedOffer));
+  }
+
+  public async getComments(
+    {params}: Request<core.ParamsDictionary | ParamsGetOffer, object, object>,
+    res: Response
+  ): Promise<void> {
+    if (!await this.offerService.findById(params.offerId)) {
+      throw new HttpError(
+        StatusCodes.NOT_FOUND,
+        `Offer with id ${params.offerId} not found.`,
+        'OfferController'
+      );
+    }
+
+    const comments = await this.commentService.findByOfferId(params.offerId);
+    this.ok(res, fillDTO(CommentResponse, comments));
   }
 
 }

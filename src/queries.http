@@ -1,16 +1,13 @@
 ###
 #offers
-
 ##get offers
 GET http://localhost:9000/offers HTTP/1.1
 
 ###
-
 ##get offer by Id
 GET http://localhost:9000/offers/634527199c42583bf5b1f0a4 HTTP/1.1
 
 ###
-
 ## create offer
 POST http://localhost:9000/offers/ HTTP/1.1
 Content-Type: application/json
@@ -49,14 +46,13 @@ Content-Type: application/json
   }
 }
 
+###
 ## delete offer
 
  DELETE http://localhost:9000/offers/634527199c42583bf5b1f0a1 HTTP/1.1
 
-
- ###
-
- ## update offer
+###
+## update offer
 
  PATCH http://localhost:9000/offers/634527199c42583bf5b1f0a4 HTTP/1.1
  Content-Type: application/json
@@ -67,9 +63,24 @@ Content-Type: application/json
    "price": 2200
  }
 
+###
+## get comments offer
+
+ GET http://localhost:9000/offers/634527199c42583bf5b1f0a7/comments HTTP/1.1
+
+###
+## create comment
+ POST http://localhost:9000/comments HTTP/1.1
+ Content-Type: application/json
+
+ {
+   "text": "perfect location",
+   "offerId": "634527199c42583bf5b1f0a7",
+   "userId": "63358c4010021a05e36db0bf"
+ }
+
 ### users
 POST http://localhost:9000/users/register HTTP/1.1
-
 Content-Type: application/json
 
 {
