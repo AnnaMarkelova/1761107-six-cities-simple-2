@@ -1,12 +1,15 @@
- ###
- #offers
-
+###
+#offers
+##get offers
 GET http://localhost:9000/offers HTTP/1.1
 
 ###
+##get offer by Id
+GET http://localhost:9000/offers/634527199c42583bf5b1f0a4 HTTP/1.1
 
+###
+## create offer
 POST http://localhost:9000/offers/ HTTP/1.1
-
 Content-Type: application/json
 
 {
@@ -21,8 +24,12 @@ Content-Type: application/json
   },
   "previewImage": "hotel1.jpg",
   "images": [
+    "hotel1.jpg",
+    "hotel2.jpg",
     "hotel3.jpg",
-    "hotel4.jpg"
+    "hotel4.jpg",
+    "hotel5.jpg",
+    "hotel6.jpg"
   ],
   "isPremium": false,
   "rating": 4,
@@ -43,9 +50,42 @@ Content-Type: application/json
   }
 }
 
+###
+## delete offer
+
+ DELETE http://localhost:9000/offers/634527199c42583bf5b1f0a1 HTTP/1.1
+
+###
+## update offer
+
+ PATCH http://localhost:9000/offers/634527199c42583bf5b1f0a4 HTTP/1.1
+ Content-Type: application/json
+
+ {
+   "title": "test1",
+   "description": "test1",
+   "price": 2200
+ }
+
+###
+## get comments offer
+
+ GET http://localhost:9000/offers/634527199c42583bf5b1f0a/comments HTTP/1.1
+
+###
+## create comment
+ POST http://localhost:9000/comments HTTP/1.1
+ Content-Type: application/json
+
+ {
+   "text": "perfect location",
+   "offerId": "634527199c42583bf5b1f0a7",
+   "userId": "63358c4010021a05e36db0bf",
+   "rating": 4
+ }
+
 ### users
 POST http://localhost:9000/users/register HTTP/1.1
-
 Content-Type: application/json
 
 {
@@ -55,3 +95,14 @@ Content-Type: application/json
   "userType": "Normal",
   "password": "1234567890"
 }
+
+### load user avatar
+POST http://localhost:9000/users/63358c4010021a05e36db0bf/avatar
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="avatar"; filename="avatar-angelina.jpg"
+Content-Type: image/jpeg
+
+< ../markup/img/avatar-angelina.jpg
+--WebAppBoundary--
