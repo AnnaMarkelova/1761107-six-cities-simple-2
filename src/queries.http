@@ -24,8 +24,12 @@ Content-Type: application/json
   },
   "previewImage": "hotel1.jpg",
   "images": [
+    "hotel1.jpg",
+    "hotel2.jpg",
     "hotel3.jpg",
-    "hotel4.jpg"
+    "hotel4.jpg",
+    "hotel5.jpg",
+    "hotel6.jpg"
   ],
   "isPremium": false,
   "rating": 4,
