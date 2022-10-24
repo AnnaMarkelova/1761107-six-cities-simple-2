@@ -1,4 +1,4 @@
-import { UserType } from '../../../types/user-type.enum';
+import { UserType } from '../../../types/user-type.enum.js';
 import { IsEmail, IsEnum, IsString, Length } from 'class-validator';
 import { NAME_LENGTH_MAX, NAME_LENGTH_MIN, PASSWORD_LENGTH_MAX, PASSWORD_LENGTH_MIN } from '../consts.js';
 export default class CreateUserDto {

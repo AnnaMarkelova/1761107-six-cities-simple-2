@@ -80,7 +80,8 @@ Content-Type: application/json
  {
    "text": "perfect location",
    "offerId": "634527199c42583bf5b1f0a7",
-   "userId": "63358c4010021a05e36db0bf"
+   "userId": "63358c4010021a05e36db0bf",
+   "rating": 4
  }
 
 ### users

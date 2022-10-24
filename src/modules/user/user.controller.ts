@@ -6,7 +6,7 @@ import { LoggerInterface } from '../../common/logger/logger.interface.js';
 import { HttpMethod } from '../../types/http-method.enum.js';
 import { UserServiceInterface } from './user-service.interface';
 import {StatusCodes} from 'http-status-codes';
-import CreateUserDto from './dto/create-user.dto';
+import CreateUserDto from './dto/create-user.dto.js';
 import { fillDTO } from '../../utils/common.js';
 import UserResponse from './response/user.response.js';
 import { ConfigInterface } from '../../common/config/config.interface.js';
