@@ -93,8 +93,7 @@ POST http://localhost:9000/users/register HTTP/1.1
 Content-Type: application/json
 
 {
-  "email": "fishh@big.local",
-  "avatarUrl": "awesome-avatar.jpg",
+  "email": "fish@big.local",
   "name": "Sophie",
   "password": "1234567890",
   "typeUser": "Normal"
