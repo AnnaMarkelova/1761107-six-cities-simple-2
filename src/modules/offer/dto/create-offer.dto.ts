@@ -67,7 +67,6 @@ export default class CreateOfferDto {
   @IsEnum(GoodType, { each: true, message: 'goods must be:Breakfast, AirConditioning, LaptopFriendlyWorkspace, BabySeat, Washer, Towels, Fridge' })
   public goods!: GoodType[];
 
-  @IsMongoId({ message: 'host must be valid ID' })
   public host!: string;
 
   @IsObject({ message: 'location must be is valid' })

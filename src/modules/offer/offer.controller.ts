@@ -99,11 +99,12 @@ export default class OfferController extends Controller {
   }
 
   public async create(
-    { body }: Request<Record<string, unknown>, Record<string, unknown>, CreateOfferDto>,
+    req: Request<Record<string, unknown>, Record<string, unknown>, CreateOfferDto>,
     res: Response,
   ): Promise<void> {
 
-    const createdOffer = await this.offerService.create(body);
+    const { body } = req;
+    const createdOffer = await this.offerService.create({...body, host: req.user.id});
 
     this.send(
       res,
