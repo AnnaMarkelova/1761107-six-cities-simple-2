@@ -3,9 +3,6 @@ import { User } from '../../types/user.type.js';
 import typegoose, { getModelForClass, defaultClasses } from '@typegoose/typegoose';
 import { createSHA256 } from '../../utils/common.js';
 
-// const PASSWORD_LENGTH_MIN = 6;
-// const PASSWORD_LENGTH_MAX = 12;
-
 const NAME_LENGTH_MIN = 1;
 const NAME_LENGTH_MAX = 15;
 
@@ -40,16 +37,15 @@ export class UserEntity extends defaultClasses.TimeStamps implements User {
 
   @prop({
     unique: true,
-    required: true})
+    required: true
+  })
   public email!: string;
 
   @prop()
   public avatarUrl!: string;
 
   @prop({
-    required: true,
-    // minlength: [PASSWORD_LENGTH_MIN, 'Min length for password is 6'],
-    // maxlength: [PASSWORD_LENGTH_MAX, 'Max length for password is 12']
+    required: true
   })
   public password!: string;
 
@@ -66,6 +62,11 @@ export class UserEntity extends defaultClasses.TimeStamps implements User {
 
   public getPassword() {
     return this.password;
+  }
+
+  public verifyPassword(password: string, salt: string) {
+    const hashPassword = createSHA256(password, salt);
+    return hashPassword === this.password;
   }
 }
 
