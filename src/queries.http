@@ -85,6 +85,7 @@ Content-Type: application/json
  }
 
 ### users
+### register user
 POST http://localhost:9000/users/register HTTP/1.1
 Content-Type: application/json
 
@@ -92,7 +93,15 @@ Content-Type: application/json
   "email": "fish@big.local",
   "avatarUrl": "awesome-avatar.jpg",
   "name": "Sophie",
-  "userType": "Normal",
+  "password": "1234567890"
+}
+
+### login user
+POST http://localhost:9000/users/login HTTP/1.1
+Content-Type: application/json
+
+{
+  "email": "fish@big.local",
   "password": "1234567890"
 }
 

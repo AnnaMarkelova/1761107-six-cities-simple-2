@@ -18,6 +18,6 @@ export default class CreateUserDto {
   @Length(PASSWORD_LENGTH_MIN, PASSWORD_LENGTH_MAX, {message: `Min length for password is ${PASSWORD_LENGTH_MIN}, max is ${PASSWORD_LENGTH_MAX}`})
   public password!: string;
 
-  @IsEnum(UserType, { message: 'User type must be Default or Pro' })
+  @IsEnum(UserType, { message: 'User type must be Normal or Pro' })
   public typeUser!: UserType;
 }
