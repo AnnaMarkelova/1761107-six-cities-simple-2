@@ -17,7 +17,7 @@ import { City } from '../../../types/city.type.js';
 import { GoodType } from '../../../types/good-type.enum.js';
 import { HotelType } from '../../../types/hotel-type.enum.js';
 import { Location } from '../../../types/location.type.js';
-import { ADULTS_MAX, ADULTS_MIN, BEDROOMS_MAX, BEDROOMS_MIN, DESCRIPTION_LENGTH_MAX, DESCRIPTION_LENGTH_MIN, FILENAME_LENGTH, IMAGES_COUNT, PRICE_MAX, PRICE_MIN, TITLE_LENGTH_MAX, TITLE_LENGTH_MIN } from '../consts.js';
+import { ADULTS_MAX, ADULTS_MIN, BEDROOMS_MAX, BEDROOMS_MIN, DESCRIPTION_LENGTH_MAX, DESCRIPTION_LENGTH_MIN, FILENAME_LENGTH, IMAGES_COUNT, PRICE_MAX, PRICE_MIN, TITLE_LENGTH_MAX, TITLE_LENGTH_MIN } from '../offer.const.js';
 
 export default class CreateOfferDto {
 

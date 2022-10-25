@@ -50,6 +50,7 @@ export class UserEntity extends defaultClasses.TimeStamps implements User {
   public password!: string;
 
   @prop({
+    default: UserType.Normal,
     required: true,
     type: String,
     enum: ['Normal', 'Pro']

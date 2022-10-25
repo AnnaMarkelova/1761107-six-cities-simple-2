@@ -39,7 +39,7 @@ export default class CommentController extends Controller {
     res: Response
   ): Promise<void> {
 
-    const {body} = req;
+    const {body, user} = req;
 
     if (!await this.offerService.findById(body.offerId)) {
       throw new HttpError(
@@ -49,7 +49,7 @@ export default class CommentController extends Controller {
       );
     }
 
-    const comment = await this.commentService.create({...body, userId: req.user.id});
+    const comment = await this.commentService.create({...body, userId: user.id});
     await this.offerService.incCommentCount(body.offerId);
     this.created(res, fillDTO(CommentResponse, comment));
   }

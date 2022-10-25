@@ -109,8 +109,8 @@ export default class OfferController extends Controller {
     res: Response,
   ): Promise<void> {
 
-    const { body } = req;
-    const createdOffer = await this.offerService.create({...body, host: req.user.id});
+    const { body, user } = req;
+    const createdOffer = await this.offerService.create({...body, host: user.id});
 
     this.send(
       res,
