@@ -11,6 +11,7 @@ GET http://localhost:9000/offers/634527199c42583bf5b1f0a4 HTTP/1.1
 ## create offer
 POST http://localhost:9000/offers/ HTTP/1.1
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImZpc2gxQGJpZy5sb2NhbCIsImlkIjoiNjM1N2Q0NTFjODQ5NWI5MzhhZjFjODE5IiwiaWF0IjoxNjY2NzAwMzg2LCJleHAiOjE2NjY4NzMxODZ9.FGJ3f0b60gjNDJFsOLYUalMInW8XS23eSWy9-Hp4OzE
 
 {
   "title": "Perfectly located TEST",
@@ -53,46 +54,57 @@ Content-Type: application/json
 ###
 ## delete offer
 
- DELETE http://localhost:9000/offers/634527199c42583bf5b1f0a1 HTTP/1.1
+DELETE http://localhost:9000/offers/634527199c42583bf5b1f0a1 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImZpc2gxQGJpZy5sb2NhbCIsImlkIjoiNjM1N2Q0NTFjODQ5NWI5MzhhZjFjODE5IiwiaWF0IjoxNjY2NzAwMzg2LCJleHAiOjE2NjY4NzMxODZ9.FGJ3f0b60gjNDJFsOLYUalMInW8XS23eSWy9-Hp4OzE
 
 ###
 ## update offer
 
- PATCH http://localhost:9000/offers/634527199c42583bf5b1f0a4 HTTP/1.1
- Content-Type: application/json
+PATCH http://localhost:9000/offers/634527199c42583bf5b1f0a4 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImZpc2gxQGJpZy5sb2NhbCIsImlkIjoiNjM1N2Q0NTFjODQ5NWI5MzhhZjFjODE5IiwiaWF0IjoxNjY2NzAwMzg2LCJleHAiOjE2NjY4NzMxODZ9.FGJ3f0b60gjNDJFsOLYUalMInW8XS23eSWy9-Hp4OzE
 
  {
-   "title": "test1",
-   "description": "test1",
+   "title": "test2",
+   "description": "test2",
    "price": 2200
  }
 
 ###
 ## get comments offer
 
- GET http://localhost:9000/offers/634527199c42583bf5b1f0a/comments HTTP/1.1
+ GET http://localhost:9000/offers/634527199c42583bf5b1f0a4/comments HTTP/1.1
 
 ###
 ## create comment
- POST http://localhost:9000/comments HTTP/1.1
- Content-Type: application/json
+POST http://localhost:9000/comments HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImZpc2gxQGJpZy5sb2NhbCIsImlkIjoiNjM1N2Q0NTFjODQ5NWI5MzhhZjFjODE5IiwiaWF0IjoxNjY2NzAwMzg2LCJleHAiOjE2NjY4NzMxODZ9.FGJ3f0b60gjNDJFsOLYUalMInW8XS23eSWy9-Hp4OzE
 
  {
    "text": "perfect location",
-   "offerId": "634527199c42583bf5b1f0a7",
-   "userId": "63358c4010021a05e36db0bf",
+   "offerId": "634527199c42583bf5b1f0a4",
    "rating": 4
  }
 
 ### users
+### register user
 POST http://localhost:9000/users/register HTTP/1.1
 Content-Type: application/json
 
 {
   "email": "fish@big.local",
-  "avatarUrl": "awesome-avatar.jpg",
   "name": "Sophie",
-  "userType": "Normal",
+  "password": "1234567890",
+  "typeUser": "Normal"
+}
+
+### login user
+POST http://localhost:9000/users/login HTTP/1.1
+Content-Type: application/json
+
+{
+  "email": "fish1@big.local",
   "password": "1234567890"
 }
 
@@ -106,3 +118,8 @@ Content-Type: image/jpeg
 
 < ../markup/img/avatar-angelina.jpg
 --WebAppBoundary--
+
+
+### check token
+GET http://localhost:9000/users/login HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImZpc2gxQGJpZy5sb2NhbCIsImlkIjoiNjM1N2Q0NTFjODQ5NWI5MzhhZjFjODE5IiwiaWF0IjoxNjY2NzAwMzg2LCJleHAiOjE2NjY4NzMxODZ9.FGJ3f0b60gjNDJFsOLYUalMInW8XS23eSWy9-Hp4OzE

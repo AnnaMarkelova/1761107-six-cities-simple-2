@@ -1,5 +1,5 @@
 import { IsEmail, IsString, Length } from 'class-validator';
-import { PASSWORD_LENGTH_MAX, PASSWORD_LENGTH_MIN } from '../consts.js';
+import { PASSWORD_LENGTH_MAX, PASSWORD_LENGTH_MIN } from '../user.constant.js';
 export default class LoginUserDto {
   @IsString({ message: 'Email is required' })
   @IsEmail({}, { message: 'Email must be valid email address' })

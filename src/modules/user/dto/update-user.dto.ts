@@ -1,6 +1,6 @@
 import { UserType } from '../../../types/user-type.enum';
 import { IsEmail, IsEnum, IsString, Length } from 'class-validator';
-import { NAME_LENGTH_MAX, NAME_LENGTH_MIN, PASSWORD_LENGTH_MAX, PASSWORD_LENGTH_MIN } from '../consts.js';
+import { NAME_LENGTH_MAX, NAME_LENGTH_MIN, PASSWORD_LENGTH_MAX, PASSWORD_LENGTH_MIN } from '../user.constant.js';
 
 export default class UpdateUserDto {
 
@@ -19,6 +19,6 @@ export default class UpdateUserDto {
   @Length(PASSWORD_LENGTH_MIN, PASSWORD_LENGTH_MAX, {message: `Min length for password is ${PASSWORD_LENGTH_MIN}, max is ${PASSWORD_LENGTH_MAX}`})
   public password?: string;
 
-  @IsEnum(UserType, { message: 'User type must be Default or Pro' })
+  @IsEnum(UserType, { message: 'User type must be Normal or Pro' })
   public typeUser?: UserType;
 }

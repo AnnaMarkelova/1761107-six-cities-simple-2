@@ -5,7 +5,6 @@ import {
   IsBoolean,
   IsEnum,
   IsInt,
-  IsMongoId,
   IsString,
   Max,
   MaxLength,
@@ -18,7 +17,7 @@ import { City } from '../../../types/city.type.js';
 import { GoodType } from '../../../types/good-type.enum.js';
 import { HotelType } from '../../../types/hotel-type.enum.js';
 import { Location } from '../../../types/location.type.js';
-import { ADULTS_MAX, ADULTS_MIN, BEDROOMS_MAX, BEDROOMS_MIN, DESCRIPTION_LENGTH_MAX, DESCRIPTION_LENGTH_MIN, FILENAME_LENGTH, IMAGES_COUNT, PRICE_MAX, PRICE_MIN, TITLE_LENGTH_MAX, TITLE_LENGTH_MIN } from '../consts.js';
+import { ADULTS_MAX, ADULTS_MIN, BEDROOMS_MAX, BEDROOMS_MIN, DESCRIPTION_LENGTH_MAX, DESCRIPTION_LENGTH_MIN, FILENAME_LENGTH, IMAGES_COUNT, PRICE_MAX, PRICE_MIN, TITLE_LENGTH_MAX, TITLE_LENGTH_MIN } from '../offer.const.js';
 
 export default class CreateOfferDto {
 
@@ -67,7 +66,6 @@ export default class CreateOfferDto {
   @IsEnum(GoodType, { each: true, message: 'goods must be:Breakfast, AirConditioning, LaptopFriendlyWorkspace, BabySeat, Washer, Towels, Fridge' })
   public goods!: GoodType[];
 
-  @IsMongoId({ message: 'host must be valid ID' })
   public host!: string;
 
   @IsObject({ message: 'location must be is valid' })
