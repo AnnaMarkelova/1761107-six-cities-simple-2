@@ -53,13 +53,11 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImZpc2gxQGJpZy5sb2NhbCIsI
 
 ###
 ## delete offer
-
 DELETE http://localhost:9000/offers/634527199c42583bf5b1f0a1 HTTP/1.1
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImZpc2gxQGJpZy5sb2NhbCIsImlkIjoiNjM1N2Q0NTFjODQ5NWI5MzhhZjFjODE5IiwiaWF0IjoxNjY2NzAwMzg2LCJleHAiOjE2NjY4NzMxODZ9.FGJ3f0b60gjNDJFsOLYUalMInW8XS23eSWy9-Hp4OzE
 
 ###
 ## update offer
-
 PATCH http://localhost:9000/offers/634527199c42583bf5b1f0a4 HTTP/1.1
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImZpc2gxQGJpZy5sb2NhbCIsImlkIjoiNjM1N2Q0NTFjODQ5NWI5MzhhZjFjODE5IiwiaWF0IjoxNjY2NzAwMzg2LCJleHAiOjE2NjY4NzMxODZ9.FGJ3f0b60gjNDJFsOLYUalMInW8XS23eSWy9-Hp4OzE
@@ -72,7 +70,6 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImZpc2gxQGJpZy5sb2NhbCIsI
 
 ###
 ## get comments offer
-
  GET http://localhost:9000/offers/634527199c42583bf5b1f0a4/comments HTTP/1.1
 
 ###
@@ -118,7 +115,6 @@ Content-Type: image/jpeg
 
 < ../markup/img/avatar-angelina.jpg
 --WebAppBoundary--
-
 
 ### check token
 GET http://localhost:9000/users/login HTTP/1.1
